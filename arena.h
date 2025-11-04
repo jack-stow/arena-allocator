@@ -1,7 +1,8 @@
 #ifndef ARENA_H
 #define ARENA_H
 
-// This header file is based on the API provided by Ryan Fleury in his article "Untangling Lifetimes: The Arena Allocator"
+// This header file is based on the API provided by Ryan Fleury in his article:
+// "Untangling Lifetimes: The Arena Allocator"
 // https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator
 
 // --- Includes and Typedefs ---
