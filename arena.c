@@ -12,7 +12,7 @@ Arena *ArenaAlloc(size_t capacity){
 	// however, it would make block resizing more difficult + potential other issues.
 	Arena *arena = malloc(sizeof(Arena));
 	if (!arena) return NULL;
-	
+
 	arena->base_pointer = malloc(capacity);
 	if (arena->base_pointer == NULL){
 		// handle partial allocation failure
