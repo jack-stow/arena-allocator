@@ -4,8 +4,8 @@
 #include <time.h>
 #include "arena.h"
 
-#define NUM_BLOCKS 10000000
-#define BLOCK_SIZE 4
+#define NUM_BLOCKS ((size_t)5000000ULL)
+#define BLOCK_SIZE ((size_t)4)
 
 // Helper: compute elapsed time in seconds from timespec
 double timespec_diff_sec(struct timespec start, struct timespec end) {
@@ -29,15 +29,15 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &wstart);
     cstart = clock();
 
-    for (int i = 0; i < NUM_BLOCKS; i++) {
+    for (size_t i = 0; i < NUM_BLOCKS; i++) {
         blocks[i] = malloc(BLOCK_SIZE);
         if (!blocks[i]) {
-            printf("malloc failed at %d\n", i);
+            printf("malloc failed at %zu\n", i);
             return 1;
         }
         memset(blocks[i], 0xAB, BLOCK_SIZE);
     }
-    for (int i = 0; i < NUM_BLOCKS; i++) free(blocks[i]);
+    for (size_t i = 0; i < NUM_BLOCKS; i++) free(blocks[i]);
 
     cend = clock();
     clock_gettime(CLOCK_MONOTONIC, &wend);
@@ -60,10 +60,10 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &wstart);
     cstart = clock();
 
-    for (int i = 0; i < NUM_BLOCKS; i++) {
+    for (size_t i = 0; i < NUM_BLOCKS; i++) {
         void *ptr = PushArray(arena, char, BLOCK_SIZE);
         if (!ptr) {
-            printf("Arena allocation failed at %d\n", i);
+            printf("Arena allocation failed at %zu\n", i);
             return 1;
         }
         memset(ptr, 0xAB, BLOCK_SIZE);
