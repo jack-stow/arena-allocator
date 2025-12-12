@@ -7,8 +7,13 @@ To build the program, call "make"
 make
 ```
 
-then call benchmark
+then call benchmark, like so
 ```sh
-./benchmark
+./benchmark <num_blocks> <block_size>
 ```
+example:
+```sh
+./benchmark 100000000 4
+```
+
 malloc/free is used as a baseline to compare performance to the arena
